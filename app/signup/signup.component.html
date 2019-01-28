@@ -1,0 +1,20 @@
+<div class="overlay" [ngClass]="{'open':isOpen}" (click)="onHideDocument($event)" >
+  <div class='modal' [ngClass]="{'open':isOpen}">
+    <div class="header">
+      <img src="assets/images/signup-icon.png">
+      <span>Sign Up</span>
+    </div>
+    <div class="text">
+      <form [formGroup]="signupForm" novalidate>
+        <input type="text" class="input name" name="name" id="name" placeholder="Name">
+        <input type="text" class="input email" name="email" id="email" placeholder="Email">
+        <input type="text" class="input phone" name="phone" id="phone" placeholder="Phone">
+        <input type="text" class="input passowrd" name="password" id="password" placeholder="Password">
+        <input type="submit" class="submit" name="submit" id="submit" value="Register">
+      </form>
+      <p>Already User –
+        <a href="javascript:void()" (click)="onSignIn()" >Sign In Here</a>
+      </p>
+    </div>
+  </div>
+</div>

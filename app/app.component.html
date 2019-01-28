@@ -1,0 +1,51 @@
+<header>
+  <div class="main">
+    <!-- logo -->
+    <a href="#!/">
+      <img class="logo" src="assets/images/logo.png" />
+    </a>
+    <!-- navigation menu -->
+    <nav>
+      <ul>
+        <li>
+          <a id="Home" href="#!/" ng-class="{activeSmall:part == 'Home'}">Home</a>
+        </li>
+        <li>
+          <a id="TrackTime" href="#!/Track-Time" ng-class="{activeSmall:part == 'Track-Time'}">Track time</a>
+        </li>
+        <li>
+          <a id="Personalize" href="#!/Personalize" ng-class="{activeSmall:part == 'Personalize'}">Personalize</a>
+        </li>
+        <li>
+          <a id="Blog" href="#!/Blog" ng-class="{activeSmall:part == 'Blog'}">Blog</a>
+        </li>
+       <li>
+          <a id="Blog" href="/lists" ng-class="{activeSmall:part == 'List'}">Users List</a>
+        </li>
+        <li>
+          <a id="Blog" href="/category" ng-class="{activeSmall:part == 'category'}">Category</a>
+        </li>
+        <li class="user">
+          <a id="SignInOut" href="#!/SignInOut" ng-class="{activeSmall:part == 'SignInOut'}">
+            <img src="assets/images/user-icon.png"> {{ phone }}
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+          </a>
+          <ul>
+            <li *ngIf="false">
+              <a href="javascript:void()" class='btn open-modal' (click)="openSignUpModel()">Switch user</a>
+            </li>
+            <li *ngIf="!isloginUser()">
+              <a href="javascript:void()" class='btn open-modal' (click)="openSignInModel()">Sign In</a>
+            </li>
+            <li *ngIf="isloginUser()">
+              <a href="javascript:void()" (click)="onSignOut()">Sign out</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <app-signup></app-signup>
+    <app-signin></app-signin>
+  </div>
+</header>
+<router-outlet></router-outlet>

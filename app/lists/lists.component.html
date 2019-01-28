@@ -1,0 +1,166 @@
+<!-- master container starts here-->
+<div class="main">
+	<div class="master-mid">
+		<!--left panel code starts here-->
+		<div class="left-master-search">
+
+			<div class="todomaster-panels">
+
+				<!--tabb menu code starts here-->
+				<div class="addmasteritems">Wannado list
+					<a href ng-click="addNewList()">
+						<img src="assets/images/masteradd.png" alt="additems">
+					</a>
+				</div>
+				<div class="todo-list-menu">
+					<ul>
+						<li ng-class="{ active: isSetTab(1) }">
+							<a href ng-click="setTab(1)">Filter</a>
+						</li>
+						<li ng-class="{ active: isSetTab(2) }">
+							<a href ng-click="setTab(2)">Manage</a>
+						</li>
+						<li ng-class="{ active: isSetTab(3) }">
+							<a href ng-click="setTab(3)">Bot</a>
+						</li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+
+
+
+				<!--tab menu code ends here-->
+
+				<div class="list-items">
+					<div class="form-search">
+						<form name="search_unassign" [formGroup]="taskForm" (submit)="addUnassignedTask(task_name,category_id)"  novalidate>
+							<input type="text" placeholder="Type your title here" maxlength="50" class="inputsearch" name="task_name" formControlName="task_name"  [(ngModel)]="task_name"
+								required>
+							<input type="submit" value="Add" class="add-items">
+							<!--error message for validation-->
+							<span class="errormessage" *ngIf="taskForm.get('task_name').hasError('required') && (taskForm.get('task_name').dirty || taskForm.get('task_name').touched)" >This field is required </span>
+							<!--error message for validation-->
+						
+						<div class="heading-text">
+							<select name="category_id" [(ngModel)]="category_id" formControlName="category_id" class="category">
+								<option>Select Category</option>
+								<option value="1">Cate 1</option>
+								<option value="2">Cate 2</option>
+							</select>
+						</div>
+						</form>
+					</div>
+					<ul class="scheduled-items" [sortablejs]="tasks" [sortablejsOptions]="sortableOptions" >
+						<ng-container *ngFor="let task of tasks">
+							<li data-id="{{task.index}}" class="squaredThree " [ngClass]="{'checked':(task.status != undefined)?task.status:false}">
+								<input type="checkbox" value="1" id="" name="check[]" [(ngModel)]="task.status" />
+								<label for="1" (click)="toggleCheckBox(task)"></label>
+								<span>{{ task.name}}</span>
+								<!--<div class="hover-icons hovershow icons1"><img src="images/hover-icons.png" alt="iocns"></div>-->
+								<div class="hover-dotted hovershow clickfunction">
+									<img src="assets/images/dotted.png" alt="iocns">
+									<!--more click popup-->
+									<div class="popup">
+										<li>Edit</li>
+										<li><a (click)="deleteTasks(task)" data-id="{{task.index}}">Delete</a></li>
+										
+									</div>
+									<!--more click popup-->
+								</div>
+							</li>
+						</ng-container>
+					</ul>
+
+				</div>
+
+
+				<div class="manage-menu-items">
+					<div class="list-items">
+						<div class="heading-text">
+							<img src="assets/images/calendar.png"> Today</div>
+						
+					</div>
+
+					<div class="list-items">
+						<div class="heading-text">
+							<img src="assets/images/upcoming.png"> Upcoming</div>
+						
+
+					</div>
+
+					<div class="list-items">
+						<div class="heading-text">
+							<img src="assets/images/upcoming.png"> Completed</div>
+						<ul class="scheduled-items" >
+							<ng-container *ngFor="let task of tasks_completed">
+								<li class="squaredThree " [ngClass]="{'checked':(task.status != undefined)?task.status:false}">
+									<input type="checkbox" value="1" id="" name="check[]" [(ngModel)]="task.status" />
+									<label for="1" (click)="toggleCheckBox(task)"></label>
+									<span>{{ task.name}}</span>
+									<!--<div class="hover-icons hovershow icons1"><img src="images/hover-icons.png" alt="iocns"></div>-->
+									<div class="hover-dotted hovershow clickfunction">
+										<img src="assets/images/dotted.png" alt="iocns">
+										<!--more click popup-->
+										<div class="popup">
+											Popup data comes here
+										</div>
+										<!--more click popup-->
+									</div>
+								</li>
+							</ng-container>
+						</ul>
+
+					</div>
+
+
+				</div>
+
+
+
+				<!--bottom to do list setting-->
+				<div class="bottom-list-menu">
+					<ul>
+						<li>
+							<a href="#">Add</a>
+						</li>
+						<li class="active">
+							<a href="#">Wanna do</a>
+						</li>
+						<li class="last">
+							<a href="#">settings</a>
+						</li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+
+
+
+			</div>
+
+		</div>
+		<!--left panel code ends here-->
+
+		<!--middle panel code starts here-->
+		<div class="middle-calender-search">
+			<img src="assets/images/middle-image1.png" alt="calender master">
+		</div>
+		<!--middle panel code ends here-->
+
+		<!--right panel code starts here-->
+
+		<div class="advertisement-master">
+			<div class="advertise-list">
+				<img src="assets/images/advertise-banner.png" alt="advertise">
+			</div>
+			<div class="advertise-list">
+				<img src="assets/images/advertise-banner.png" alt="advertise">
+			</div>
+			<div class="advertise-list">
+				<img src="assets/images/advertise-banner.png" alt="advertise">
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<!--right panel code ends here-->
+</div>
+<!-- master container ends here-->

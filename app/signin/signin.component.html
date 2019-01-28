@@ -1,0 +1,23 @@
+<div class="overlay" [ngClass]="{'open':isOpen}" (click)="onHideDocument($event)">
+  <div class='modal' [ngClass]="{'open':isOpen}">
+    <div class="header">
+      <img src="assets/images/signup-icon.png">
+      <span>{{ header_text }}</span>
+    </div>
+    <div class="text">
+      <form [formGroup]="signinForm" novalidate>
+        <label style="font-size: 16px;font-weight: 600;display: block;text-align: left;padding: 0px 10px;">Enter list phone numer (List ID)</label>
+        <input type="text" class="input phone" id="phone" placeholder="Phone" name="phone" formControlName="phone" [(ngModel)]="phone"
+          required style="width: 80%;padding-left: 10px;">
+          <input type="submit" class="submit" name="submit" id="submit" (click)="onSignIn()" value="{{ 'Go' }}" style="width: 50px;margin-left: 5px;border-radius: 0px;">
+        </form>
+        <span class="errormessage" *ngIf="signinForm.get('phone').hasError('required') && (signinForm.get('phone').dirty || signinForm.get('phone').touched)">This field is required </span>
+      <p *ngIf="header_text == 'Sign In' && false">Creat new account –
+        <a href="javascript:void(0)" (click)="onSignUp()">Sign Up Here</a>
+      </p>
+      <p *ngIf="header_text == 'Sign Up' && false">Already User –
+        <a href="javascript:void(0)" (click)="onSignInOpen()">Sign In</a>
+      </p>
+    </div>
+  </div>
+</div>
